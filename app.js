@@ -32,17 +32,22 @@ const view = {
 let catalog = new Map();
 let lenses = [];
 let drag = null;
+let testDataDir = DATA_DIR;
 
 init().catch((error) => {
   panes.forEach((pane) => showStatus(pane, error.message));
 });
 
 async function init() {
-  const files = await loadManifest();
+  const selectedTest = await loadSelectedTest();
+  testDataDir = `${DATA_DIR}${selectedTest.folder ? `${encodePathPart(selectedTest.folder)}/` : ""}`;
+  document.title = `${selectedTest.title} | PhotoCompare`;
+
+  const files = selectedTest.files;
   const entries = files.map(parseFileName).filter(Boolean);
 
   if (!entries.length) {
-    throw new Error("V data/manifest.json není žádný JPEG ve formátu „Objektiv - f2.8.jpg“.");
+    throw new Error("Vybraný test neobsahuje žádný JPEG ve formátu „Objektiv - f2.8.jpg“.");
   }
 
   catalog = buildCatalog(entries);
@@ -65,19 +70,82 @@ async function init() {
   renderAll();
 }
 
-async function loadManifest() {
+async function loadSelectedTest() {
+  const tests = await loadTests();
+  if (!tests.length) {
+    throw new Error("Není dostupný žádný test.");
+  }
+
+  const requestedTest = new URLSearchParams(window.location.search).get("test");
+  return tests.find((test) => test.id === requestedTest || test.folder === requestedTest) || tests[0];
+}
+
+async function loadTests() {
+  try {
+    const discoveredTests = await discoverTestsFromDirectory();
+    if (discoveredTests.length) {
+      return discoveredTests;
+    }
+  } catch {
+    // Directory discovery works with Python's local server, while hosted sites use the manifest fallback.
+  }
+
   const response = await fetch(MANIFEST_URL);
   if (!response.ok) {
     throw new Error("Chybí data/manifest.json. Spusť generátor manifestu a potom obnov stránku.");
   }
 
   const data = await response.json();
-  const files = Array.isArray(data) ? data : data.files;
-  if (!Array.isArray(files)) {
-    throw new Error("Manifest musí obsahovat pole souborů.");
+  return getTests(data);
+}
+
+async function discoverTestsFromDirectory() {
+  const folders = await readDirectoryLinks(DATA_DIR);
+  const tests = [];
+
+  for (const folder of folders) {
+    const files = (await readDirectoryLinks(`${DATA_DIR}${encodePathPart(folder)}/`))
+      .filter((file) => /(?:\.jpe?g)+$/i.test(file))
+      .sort(new Intl.Collator("cs", { numeric: true }).compare);
+
+    if (!files.length) {
+      continue;
+    }
+
+    tests.push({
+      id: folder,
+      title: `${folder} comparison`,
+      folder,
+      files,
+    });
   }
 
-  return files;
+  return tests;
+}
+
+async function readDirectoryLinks(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Složku nejde načíst: ${url}`);
+  }
+
+  const html = await response.text();
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  return Array.from(doc.querySelectorAll("a"))
+    .map((link) => link.getAttribute("href") || "")
+    .filter((href) => href && href !== "../")
+    .map((href) => decodeURIComponent(href.replace(/\/$/, "")))
+    .filter((href) => !href.includes("/") && href !== "manifest.json")
+    .sort(new Intl.Collator("cs", { numeric: true }).compare);
+}
+
+function getTests(data) {
+  if (Array.isArray(data.tests)) {
+    return data.tests;
+  }
+
+  const files = Array.isArray(data) ? data : data.files;
+  return files ? [{ id: "default", title: "35 mm lens comparison", folder: "", files }] : [];
 }
 
 function parseFileName(file) {
@@ -290,7 +358,11 @@ function updatePaneExposure(pane) {
 }
 
 function toDataUrl(file) {
-  return `${DATA_DIR}${String(file).split("/").map(encodeURIComponent).join("/")}`;
+  return `${testDataDir}${String(file).split("/").map(encodeURIComponent).join("/")}`;
+}
+
+function encodePathPart(path) {
+  return String(path).split("/").map(encodeURIComponent).join("/");
 }
 
 function zoomAt(pane, clientX, clientY, factor) {

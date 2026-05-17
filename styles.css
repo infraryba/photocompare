@@ -61,15 +61,6 @@ a {
   border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.test-list h2 {
-  margin: 0 0 18px;
-  color: #d8dbe0;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 .test-card {
   display: grid;
   gap: 12px;

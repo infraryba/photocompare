@@ -1,21 +1,29 @@
 # PhotoCompare
 
-Statická webová aplikace pro porovnání čtyř JPEG fotografií. Fotky se berou ze složky `data` a v každém panelu jde vybrat objektiv, clonu a lokální kompenzaci expozice. Zoom kolečkem a posun tažením se synchronizují mezi všemi čtyřmi panely.
+Statická webová aplikace pro porovnání čtyř JPEG fotografií. Jednotlivé testy jsou podsložky ve složce `data`; název testu se vytvoří jako název podsložky plus `comparison`. V každém panelu jde vybrat objektiv, clonu a lokální kompenzaci expozice. Zoom kolečkem a posun tažením se synchronizují mezi všemi čtyřmi panely.
 
 ## Názvy souborů
 
-Aplikace očekává JPEGy ve tvaru:
+Aplikace očekává JPEGy v podsložce testu ve tvaru:
 
 ```text
-Název objektivu - f2.8.jpg
-Název objektivu - f5.6.jpeg
+data/35mm lenses/Název objektivu - f2.8.jpg
+data/35mm lenses/Název objektivu - f5.6.jpeg
 ```
 
 Část před ` - f` se použije jako objektiv, číslo za `f` jako clona.
 
 ## Obnova seznamu fotek
 
-Po přidání nebo smazání fotek ve složce `data` spusť:
+Při lokálním spuštění přes Python server se testy načítají automaticky podle podsložek v `data`, takže po přidání nové podsložky stačí obnovit úvodní stránku.
+
+Pro hostování na GitHub Pages je potřeba `data/manifest.json`, protože GitHub Pages běžně neposkytuje výpis obsahu složek. Po přidání nebo smazání testů či fotek ho obnovíš příkazem:
+
+```text
+update-manifest.bat
+```
+
+Nebo ručně:
 
 ```bash
 node scripts/generate-manifest.mjs
@@ -27,7 +35,7 @@ Na Windows můžeš použít i:
 powershell -ExecutionPolicy Bypass -File scripts/generate-manifest.ps1
 ```
 
-Tím se obnoví `data/manifest.json`, který je potřeba hlavně při hostování webu.
+Tím se obnoví `data/manifest.json`, který je potřeba hlavně při hostování webu. Manifest se generuje podle podsložek v `data`.
 
 ## Lokální spuštění
 
