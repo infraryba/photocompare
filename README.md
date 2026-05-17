@@ -1,6 +1,6 @@
 # PhotoCompare
 
-Statická webová aplikace pro porovnání čtyř JPEG fotografií. Jednotlivé testy jsou podsložky ve složce `data`; název testu se vytvoří jako název podsložky plus `comparison`. V každém panelu jde vybrat objektiv, clonu a lokální kompenzaci expozice. Zoom kolečkem a posun tažením se synchronizují mezi všemi čtyřmi panely.
+Statická webová aplikace pro porovnání čtyř JPEG fotografií. Jednotlivé testy jsou podsložky ve složce `data`; název testu odpovídá názvu podsložky. V každém panelu jde vybrat objektiv, clonu a lokální kompenzaci expozice. Zoom kolečkem a posun tažením se synchronizují mezi všemi čtyřmi panely.
 
 ## Názvy souborů
 

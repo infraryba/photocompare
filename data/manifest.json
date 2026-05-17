@@ -1,0 +1,35 @@
+﻿{
+    "tests":  [
+                  {
+                      "title":  "35mm lenses",
+                      "files":  [
+                                    "Flektogon 35mm f2.4 - f2.4.jpg",
+                                    "Flektogon 35mm f2.4 - f2.8.jpg",
+                                    "Flektogon 35mm f2.4 - f4.0.jpg",
+                                    "Flektogon 35mm f2.4 - f5.6.jpg",
+                                    "Flektogon 35mm f2.4 - f8.0.jpg",
+                                    "Nikon 35mm f2.0 - f2.0.jpg",
+                                    "Nikon 35mm f2.0 - f2.8.jpg",
+                                    "Nikon 35mm f2.0 - f4.0.jpg",
+                                    "Nikon 35mm f2.0 - f5.6.jpg",
+                                    "Nikon 35mm f2.0 - f8.0.jpg",
+                                    "Pentax-K 35mm f2.0 - f2.0.jpg",
+                                    "Pentax-K 35mm f2.0 - f2.8.jpg",
+                                    "Pentax-K 35mm f2.0 - f4.0.jpg",
+                                    "Pentax-K 35mm f2.0 - f8.jpg",
+                                    "Pentax-M 35mm f2.0 - f2.0.jpg",
+                                    "Pentax-M 35mm f2.0 - f2.8.jpg",
+                                    "Pentax-M 35mm f2.0 - f4.0.jpg",
+                                    "Pentax-M 35mm f2.0 - f5.6.jpg",
+                                    "Pentax-M 35mm f2.0 - f8.0.jpg",
+                                    "Sigma 35mm f2 DG DN - f2.0.jpg",
+                                    "Sigma 35mm f2 DG DN - f2.8.jpg",
+                                    "Sigma 35mm f2 DG DN - f4.0.jpg",
+                                    "Sigma 35mm f2 DG DN - f5.6.jpg",
+                                    "Sigma 35mm f2 DG DN - f8.0.jpg"
+                                ],
+                      "folder":  "35mm lenses",
+                      "id":  "35mm lenses"
+                  }
+              ]
+}

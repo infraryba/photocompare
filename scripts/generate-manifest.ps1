@@ -11,7 +11,7 @@ $tests = @(Get-ChildItem -LiteralPath $dataDir -Directory |
     if ($files.Count -gt 0) {
       @{
         id = $folder.Name
-        title = "$($folder.Name) comparison"
+        title = $folder.Name
         folder = $folder.Name
         files = @($files)
       }

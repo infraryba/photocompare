@@ -19,7 +19,7 @@ for (const item of items.filter((entry) => entry.isDirectory()).sort((a, b) => c
 
   tests.push({
     id: item.name,
-    title: `${item.name} comparison`,
+    title: item.name,
     folder: item.name,
     files,
   });

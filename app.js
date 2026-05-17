@@ -114,7 +114,7 @@ async function discoverTestsFromDirectory() {
 
     tests.push({
       id: folder,
-      title: `${folder} comparison`,
+      title: folder,
       folder,
       files,
     });
