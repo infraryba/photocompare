@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>35 mm lens comparison | PhotoCompare</title>
+    <link rel="stylesheet" href="./styles.css?v=6">
+  </head>
+  <body class="compare-page">
+    <main class="compare-grid" id="compareGrid" aria-label="Porovnání čtyř fotografií">
+      <section class="pane" data-pane="0">
+        <img class="photo" alt="">
+        <div class="status" aria-live="polite">Načítám...</div>
+        <div class="controls">
+          <select class="lens-select" aria-label="Objektiv"></select>
+          <select class="aperture-select" aria-label="Clona"></select>
+          <select class="exposure-select" aria-label="Kompenzace expozice"></select>
+        </div>
+      </section>
+      <section class="pane" data-pane="1">
+        <img class="photo" alt="">
+        <div class="status" aria-live="polite">Načítám...</div>
+        <div class="controls">
+          <select class="lens-select" aria-label="Objektiv"></select>
+          <select class="aperture-select" aria-label="Clona"></select>
+          <select class="exposure-select" aria-label="Kompenzace expozice"></select>
+        </div>
+      </section>
+      <section class="pane" data-pane="2">
+        <img class="photo" alt="">
+        <div class="status" aria-live="polite">Načítám...</div>
+        <div class="controls">
+          <select class="lens-select" aria-label="Objektiv"></select>
+          <select class="aperture-select" aria-label="Clona"></select>
+          <select class="exposure-select" aria-label="Kompenzace expozice"></select>
+        </div>
+      </section>
+      <section class="pane" data-pane="3">
+        <img class="photo" alt="">
+        <div class="status" aria-live="polite">Načítám...</div>
+        <div class="controls">
+          <select class="lens-select" aria-label="Objektiv"></select>
+          <select class="aperture-select" aria-label="Clona"></select>
+          <select class="exposure-select" aria-label="Kompenzace expozice"></select>
+        </div>
+      </section>
+    </main>
+
+    <div class="toolbar" aria-label="Ovládání zobrazení">
+      <a class="toolbar-link" href="./index.html" title="Zpět na seznam testů">Testy</a>
+      <button id="fitButton" type="button" title="Přizpůsobit celé fotografii">Celá</button>
+      <output id="zoomReadout" aria-label="Zoom">100%</output>
+    </div>
+
+    <script src="./app.js?v=7" type="module"></script>
+  </body>
+</html>
