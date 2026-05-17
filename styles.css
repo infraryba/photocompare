@@ -170,6 +170,14 @@ a {
   backdrop-filter: blur(12px);
 }
 
+.pane.is-empty {
+  cursor: default;
+}
+
+.pane.is-empty .controls {
+  display: none;
+}
+
 select {
   min-width: 0;
   max-width: min(34vw, 320px);

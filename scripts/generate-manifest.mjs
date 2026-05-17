@@ -1,4 +1,4 @@
-import { readdir, writeFile } from "node:fs/promises";
+import { readFile, readdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 const dataDir = new URL("../data/", import.meta.url);
@@ -17,12 +17,26 @@ for (const item of items.filter((entry) => entry.isDirectory()).sort((a, b) => c
     continue;
   }
 
-  tests.push({
+  const test = {
     id: item.name,
     title: item.name,
     folder: item.name,
     files,
-  });
+  };
+
+  try {
+    const config = JSON.parse(await readFile(new URL("config.json", testDir), "utf8"));
+    if (Array.isArray(config.defaultLenses)) {
+      test.defaultLenses = config.defaultLenses;
+    }
+    if (Array.isArray(config.lensOrder)) {
+      test.lensOrder = config.lensOrder;
+    }
+  } catch {
+    // Test configuration is optional.
+  }
+
+  tests.push(test);
 }
 
 await writeFile(

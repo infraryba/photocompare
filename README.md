@@ -13,6 +13,22 @@ data/35mm lenses/Název objektivu - f5.6.jpeg
 
 Část před ` - f` se použije jako objektiv, číslo za `f` jako clona.
 
+## Výchozí nastavení testu
+
+Do podsložky testu můžeš přidat `config.json`, kde nastavíš výchozí objektivy pro čtyři panely:
+
+```json
+{
+  "defaultLenses": [
+    "Sony FE 20mm F1.8 G",
+    "Nikon Ai Nikkor 20mm f2.8S",
+    "SMC Pentax 20mm f4"
+  ]
+}
+```
+
+První položka se otevře vlevo nahoře. Volitelně můžeš přidat i `lensOrder`, pokud chceš jiné pořadí v menu.
+
 ## Obnova seznamu fotek
 
 Při lokálním spuštění přes Python server se testy načítají automaticky podle podsložek v `data`, takže po přidání nové podsložky stačí obnovit úvodní stránku.

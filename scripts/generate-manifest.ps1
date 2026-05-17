@@ -9,12 +9,25 @@ $tests = @(Get-ChildItem -LiteralPath $dataDir -Directory |
       ForEach-Object { $_.Name }
 
     if ($files.Count -gt 0) {
-      @{
+      $test = @{
         id = $folder.Name
         title = $folder.Name
         folder = $folder.Name
         files = @($files)
       }
+
+      $configPath = Join-Path $folder.FullName "config.json"
+      if (Test-Path -LiteralPath $configPath) {
+        $config = Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
+        if ($config.defaultLenses) {
+          $test.defaultLenses = @($config.defaultLenses)
+        }
+        if ($config.lensOrder) {
+          $test.lensOrder = @($config.lensOrder)
+        }
+      }
+
+      $test
     }
   })
 

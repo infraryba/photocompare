@@ -51,16 +51,22 @@ async function init() {
   }
 
   catalog = buildCatalog(entries);
-  lenses = Array.from(catalog.keys()).sort(new Intl.Collator("cs", { numeric: true }).compare);
+  lenses = sortLenses(Array.from(catalog.keys()), selectedTest);
 
   panes.forEach((pane, index) => {
-    pane.lens = lenses[index % lenses.length];
+    pane.lens = getDefaultPaneLens(selectedTest, index);
+    bindPane(pane);
+
+    if (!pane.lens) {
+      setPaneEmpty(pane);
+      return;
+    }
+
     fillLensOptions(pane);
     pane.lensSelect.value = pane.lens;
     pane.apertureKey = getDefaultAperture(pane.lens);
     fillApertureOptions(pane);
     fillExposureOptions(pane);
-    bindPane(pane);
     updatePaneImage(pane);
     updatePaneExposure(pane);
   });
@@ -112,15 +118,30 @@ async function discoverTestsFromDirectory() {
       continue;
     }
 
-    tests.push({
+    const test = {
       id: folder,
       title: folder,
       folder,
       files,
-    });
+    };
+
+    Object.assign(test, await loadTestConfig(folder));
+    tests.push(test);
   }
 
   return tests;
+}
+
+async function loadTestConfig(folder) {
+  try {
+    const response = await fetch(`${DATA_DIR}${encodePathPart(folder)}/config.json`);
+    if (!response.ok) {
+      return {};
+    }
+    return response.json();
+  } catch {
+    return {};
+  }
 }
 
 async function readDirectoryLinks(url) {
@@ -191,6 +212,46 @@ function buildCatalog(entries) {
   }
 
   return nextCatalog;
+}
+
+function sortLenses(lensNames, test) {
+  const collator = new Intl.Collator("cs", { numeric: true });
+  const configuredOrder = [...(test.lensOrder || []), ...(test.defaultLenses || [])];
+
+  return lensNames.sort((a, b) => {
+    const aIndex = findConfiguredLensIndex(configuredOrder, a);
+    const bIndex = findConfiguredLensIndex(configuredOrder, b);
+
+    if (aIndex !== bIndex) {
+      return aIndex - bIndex;
+    }
+
+    return collator.compare(a, b);
+  });
+}
+
+function getDefaultPaneLens(test, paneIndex) {
+  const configuredLens = (test.defaultLenses || [])[paneIndex];
+  if (configuredLens) {
+    const matchedLens = findConfiguredLens(lenses, configuredLens);
+    if (matchedLens) {
+      return matchedLens;
+    }
+  }
+
+  return lenses[paneIndex] || "";
+}
+
+function findConfiguredLens(lensNames, configuredLens) {
+  return lensNames.find((lens) => lens === configuredLens)
+    || lensNames.find((lens) => lens.includes(configuredLens) || configuredLens.includes(lens));
+}
+
+function findConfiguredLensIndex(configuredOrder, lens) {
+  const index = configuredOrder.findIndex((configuredLens) => (
+    lens === configuredLens || lens.includes(configuredLens) || configuredLens.includes(lens)
+  ));
+  return index >= 0 ? index : Number.POSITIVE_INFINITY;
 }
 
 function fillLensOptions(pane) {
@@ -293,6 +354,18 @@ function bindPane(pane) {
 
   pane.element.addEventListener("pointerup", endDrag);
   pane.element.addEventListener("pointercancel", endDrag);
+}
+
+function setPaneEmpty(pane) {
+  pane.element.classList.add("is-empty");
+  pane.image.removeAttribute("src");
+  pane.image.alt = "";
+  pane.naturalWidth = 0;
+  pane.naturalHeight = 0;
+  pane.lensSelect.replaceChildren();
+  pane.apertureSelect.replaceChildren();
+  pane.exposureSelect.replaceChildren();
+  hideStatus(pane);
 }
 
 function updatePaneImage(pane) {

@@ -1,6 +1,36 @@
 ﻿{
     "tests":  [
                   {
+                      "defaultLenses":  [
+                                            "Sony FE 20mm F1.8 G",
+                                            "Nikon Ai Nikkor 20mm f2.8S",
+                                            "SMC Pentax 20mm f4"
+                                        ],
+                      "title":  "20 mm lenses",
+                      "files":  [
+                                    "Nikon Ai Nikkor 20mm f2.8S - f2.8.jpg",
+                                    "Nikon Ai Nikkor 20mm f2.8S - f4.jpg",
+                                    "Nikon Ai Nikkor 20mm f2.8S - f5.6.jpg",
+                                    "Nikon Ai Nikkor 20mm f2.8S - f8.jpg",
+                                    "SMC Pentax 20mm f4 - f4.jpg",
+                                    "SMC Pentax 20mm f4 - f5.6.jpg",
+                                    "SMC Pentax 20mm f4 - f8.jpg",
+                                    "Sony FE 20mm F1.8 G - f1.8.jpg",
+                                    "Sony FE 20mm F1.8 G - f2.8.jpg",
+                                    "Sony FE 20mm F1.8 G - f4.jpg",
+                                    "Sony FE 20mm F1.8 G - f5.6.jpg",
+                                    "Sony FE 20mm F1.8 G - f8.jpg"
+                                ],
+                      "folder":  "20 mm lenses",
+                      "id":  "20 mm lenses"
+                  },
+                  {
+                      "defaultLenses":  [
+                                            "Sigma 35mm f2 DG DN",
+                                            "Flektogon 35mm f2.4",
+                                            "Nikon 35mm f2.0",
+                                            "Pentax-K 35mm f2.0"
+                                        ],
                       "title":  "35mm lenses",
                       "files":  [
                                     "Flektogon 35mm f2.4 - f2.4.jpg",
@@ -30,6 +60,38 @@
                                 ],
                       "folder":  "35mm lenses",
                       "id":  "35mm lenses"
+                  },
+                  {
+                      "defaultLenses":  [
+                                            "Sony Sonnar T FE 55mm f1.8 ZA",
+                                            "SMC Pentax-M 50mm f1.7",
+                                            "Nikon AF Nikkor 50mm f1.8D",
+                                            "Porst Color Reflex MC Auto 55mm f1.2"
+                                        ],
+                      "title":  "50 mm lenses",
+                      "files":  [
+                                    "Nikon AF Nikkor 50mm f1.8D - f1.8.jpg",
+                                    "Nikon AF Nikkor 50mm f1.8D - f2.8.jpg",
+                                    "Nikon AF Nikkor 50mm f1.8D - f4.jpg",
+                                    "Porst Color Reflex MC Auto 55mm f1.2 - f1.2.jpg",
+                                    "Porst Color Reflex MC Auto 55mm f1.2 - f2.8.jpg",
+                                    "Porst Color Reflex MC Auto 55mm f1.2 - f2.jpg",
+                                    "Porst Color Reflex MC Auto 55mm f1.2 - f4.jpg",
+                                    "SMC Pentax 55mm f1.8 - f1.8.jpg",
+                                    "SMC Pentax 55mm f1.8 - f2.8.jpg",
+                                    "SMC Pentax 55mm f1.8 - f2.jpg",
+                                    "SMC Pentax 55mm f1.8 - f4.jpg",
+                                    "SMC Pentax-M 50mm f1.7 - f1.7.jpg",
+                                    "SMC Pentax-M 50mm f1.7 - f2.8.jpg",
+                                    "SMC Pentax-M 50mm f1.7 - f2.jpg",
+                                    "SMC Pentax-M 50mm f1.7 - f4.jpg",
+                                    "Sony Sonnar T FE 55mm f1.8 ZA - f1.8.jpg",
+                                    "Sony Sonnar T FE 55mm f1.8 ZA - f2.8.jpg",
+                                    "Sony Sonnar T FE 55mm f1.8 ZA - f2.jpg",
+                                    "Sony Sonnar T FE 55mm f1.8 ZA - f4.jpg"
+                                ],
+                      "folder":  "50 mm lenses",
+                      "id":  "50 mm lenses"
                   }
               ]
 }
