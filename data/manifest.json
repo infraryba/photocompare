@@ -92,6 +92,40 @@
                                 ],
                       "folder":  "50 mm lenses",
                       "id":  "50 mm lenses"
+                  },
+                  {
+                      "defaultLenses":  [
+                                            "Sigma 35mm f2 DG DN",
+                                            "Voigtlander Ultron 35mm f2 Aspherical VM Type II"
+                                        ],
+                      "title":  "Sigma vs. Ultron closeup and bokeh",
+                      "files":  [
+                                    "Sigma 35mm f2 DG DN - f2.8.jpg",
+                                    "Sigma 35mm f2 DG DN - f2.jpg",
+                                    "Sigma 35mm f2 DG DN - f4.jpg",
+                                    "Voigtlander Ultron 35mm f2 Aspherical VM Type II - f2.8.jpg",
+                                    "Voigtlander Ultron 35mm f2 Aspherical VM Type II - f2.jpg",
+                                    "Voigtlander Ultron 35mm f2 Aspherical VM Type II - f4.jpg"
+                                ],
+                      "folder":  "Sigma vs. Ultron closeup and bokeh",
+                      "id":  "Sigma vs. Ultron closeup and bokeh"
+                  },
+                  {
+                      "defaultLenses":  [
+                                            "Sigma 35mm f2 DG DN",
+                                            "Voigtlander Ultron 35mm f2 Aspherical VM Type II"
+                                        ],
+                      "title":  "Sigma vs. Ultron infinity",
+                      "files":  [
+                                    "Sigma 35mm f2 DG DN - f2.8.jpg",
+                                    "Sigma 35mm f2 DG DN - f2.jpg",
+                                    "Sigma 35mm f2 DG DN - f4.jpg",
+                                    "Voigtlander Ultron 35mm f2 Aspherical VM Type II - f2.8.jpg",
+                                    "Voigtlander Ultron 35mm f2 Aspherical VM Type II - f2.jpg",
+                                    "Voigtlander Ultron 35mm f2 Aspherical VM Type II - f4.jpg"
+                                ],
+                      "folder":  "Sigma vs. Ultron infinity",
+                      "id":  "Sigma vs. Ultron infinity"
                   }
               ]
 }
