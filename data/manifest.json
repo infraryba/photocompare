@@ -126,6 +126,42 @@
                                 ],
                       "folder":  "Sigma vs. Ultron infinity",
                       "id":  "Sigma vs. Ultron infinity"
+                  },
+                  {
+                      "defaultLenses":  [
+                                            "Sony FE 20mm F1.8 G",
+                                            "Voigtlander Ultron 21mm f1.8 Aspherical VM"
+                                        ],
+                      "title":  "Sony 20mm vs Voigtlander 21mm scene 1",
+                      "files":  [
+                                    "Sony FE 20mm F1.8 G - f1.8.jpg",
+                                    "Sony FE 20mm F1.8 G - f2.8.jpg",
+                                    "Sony FE 20mm F1.8 G - f4.jpg",
+                                    "Sony FE 20mm F1.8 G - f8.jpg",
+                                    "Voigtlander Ultron 21mm f1.8 Aspherical VM - f1.8.jpg",
+                                    "Voigtlander Ultron 21mm f1.8 Aspherical VM - f2.8.jpg",
+                                    "Voigtlander Ultron 21mm f1.8 Aspherical VM - f4.jpg",
+                                    "Voigtlander Ultron 21mm f1.8 Aspherical VM - f8.jpg"
+                                ],
+                      "folder":  "Sony 20mm vs Voigtlander 21mm scene 1",
+                      "id":  "Sony 20mm vs Voigtlander 21mm scene 1"
+                  },
+                  {
+                      "defaultLenses":  [
+                                            "Sony FE 20mm F1.8 G",
+                                            "Voigtlander Ultron 21mm f1.8 Aspherical VM"
+                                        ],
+                      "title":  "Sony 20mm vs Voigtlander 21mm scene 2",
+                      "files":  [
+                                    "Sony FE 20mm F1.8 G - f1.8.jpg",
+                                    "Sony FE 20mm F1.8 G - f2.8.jpg",
+                                    "Sony FE 20mm F1.8 G - f4.jpg",
+                                    "Voigtlander Ultron 21mm f1.8 Aspherical VM - f1.8.jpg",
+                                    "Voigtlander Ultron 21mm f1.8 Aspherical VM - f2.8.jpg",
+                                    "Voigtlander Ultron 21mm f1.8 Aspherical VM - f4.jpg"
+                                ],
+                      "folder":  "Sony 20mm vs Voigtlander 21mm scene 2",
+                      "id":  "Sony 20mm vs Voigtlander 21mm scene 2"
                   }
               ]
 }
